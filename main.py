@@ -151,6 +151,11 @@ def update_movie_by_id(id):
     body = request.get_json()
     pprint(body)
     print(id)
+    for movie in movies:
+        if movie["id"] == id:
+            movie.update(body)
+            return {"message": f"{id}Movie updated successfully"}, 200
+    return {"message": "Movie not found"}, HTTP_NOT_FOUND
 
 
 if __name__ == "__main__":
