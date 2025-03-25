@@ -1,4 +1,6 @@
-from flask import Flask
+from pprint import pprint
+
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -125,8 +127,30 @@ def delete_movie_by_id(id):
     for movie in movies:
         if movie["id"] == id:
             movies.remove(movie)
-            return {"message": f"{movie['name']}Movie deleted successfully"}, 200
+            return {"message": f"{id}Movie deleted successfully"}, 200
     return {"message": "Movie not found"}, HTTP_NOT_FOUND
+
+
+@app.post("/movies")
+# def generate_movie_id():
+#     highest_id = max(movie["id"] for movie in movies)
+#     return highest_id + 1
+
+
+def create_movies():
+    new_movie = request.get_json()
+    print(new_movie)
+    ids = [int(movie["id"]) for movie in movies]
+    new_movie["id"] = str(max(ids) + 1)
+    movies.append(new_movie)
+    return {"message": "Movie created successfully"}
+
+
+@app.put("/movies/<id>")
+def update_movie_by_id(id):
+    body = request.get_json()
+    pprint(body)
+    print(id)
 
 
 if __name__ == "__main__":
