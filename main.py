@@ -119,5 +119,15 @@ def get_movie_by_id(id):
     return {"message": "Movie not found"}, HTTP_NOT_FOUND
 
 
+@app.delete("/movies/<id>")
+def delete_movie_by_id(id):
+    # Auto converts data -> JSON (Flask)
+    for movie in movies:
+        if movie["id"] == id:
+            movies.remove(movie)
+            return {"message": f"{movie['name']}Movie deleted successfully"}, 200
+    return {"message": "Movie not found"}, HTTP_NOT_FOUND
+
+
 if __name__ == "__main__":
     app.run(debug=True)
