@@ -1,16 +1,14 @@
 from flask import Flask, render_template
+from config import Config
+from routes.main_bp import main_bp
+from routes.movies_bp import movies_bp
+from routes.movies_list_bp import movies_list_bp
+from extensions import db
 from sqlalchemy.sql import text
 
-from config import Config
-from extensions import db
-from routes.main_bp import main_bp
-from routes.movie_list_bp import movies_list_bp
-from routes.movies_bp import movies_bp
-
-
 def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
+app = Flask(**name**)
+app.config.from_object(Config)
 
     # Initialize the DB
     db.init_app(app)
@@ -24,12 +22,13 @@ def create_app():
 
     # Flask - Blueprints
     app.register_blueprint(main_bp)
-    app.register_blueprint(movies_bp, url_prefix="/movies")
+    app.register_blueprint(movies_bp, url_prefix="/movies")  # Refactor - Mailability ⬆️
     app.register_blueprint(movies_list_bp, url_prefix="/movie-list")
 
     return app
 
+if **name** == "**main**":
+app = create_app()
+app.run(debug=True)
 
-if __name__ == "__main__":
-    app = create_app()
-    app.run(debug=True)
+# Ctrl + ~ -> Open and close terminal
