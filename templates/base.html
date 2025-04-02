@@ -46,6 +46,16 @@
           <li><a href="/about">About</a></li>
           <li><a href="/profile">Profile</a></li>
           <li><a href="/movie-list">Movies</a></li>
+          <li><a href="/movie-list/new">Add Movie</a></li>
+        </ul>
+
+        <ul class="nav-link-container">
+          {% if current_user.is_authenticated %}
+          <li><a href="/logout">Logout</a></li>
+          <li><p>{{current_user.username}}</p></li>
+          {% else %}
+          <li><a href="/login">Login</a></li>
+          {% endif %}
         </ul>
       </nav>
     </header>

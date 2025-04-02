@@ -1,8 +1,9 @@
+from operator import ge
 from pprint import pprint
 from sys import exception
 
 from flask import Blueprint, redirect, render_template, request, url_for
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from extensions import db
@@ -80,3 +81,9 @@ def submit_signup_page():
         print(e)
         db.session.rollback()
         return redirect(url_for("auth_bp.submit_signup_page"))
+
+
+@auth_bp.get("/logout")
+def logout_page():
+    logout_user()
+    return redirect(url_for("auth_bp.submit_login_page"))
