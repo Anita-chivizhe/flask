@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  .form-element {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 500px;
+  }
+</style>
+{% endblock %} {% block content %}
+<form action="ur_for" method="post" class="form-container">
+  <div class="form-element">
+    <label for="name">Name</label>
+    <input type="text" placeholder="John" id="name" required />
+  </div>
+  <div class="form-element">
+    <label for="poster">Poster</label>
+    <input type="text" placeholder="John" id="poster" required />
+  </div>
+  <div class="form-element">
+    <label for="rating">Rating</label>
+    <input
+      type="number"
+      placeholder="8"
+      id="rating"
+      required
+      min="1"
+      max="10"
+      name="rating"
+    />
+  </div>
+  <div class="form-element">
+    <label for="summary">Summary</label>
+    <input
+      type="text"
+      placeholder="Awesome movie"
+      id="summary"
+      required
+      name="summary"
+    />
+  </div>
+  <div class="form-element">
+    <label for="trailer">Trailer</label>
+    <input
+      type="text"
+      placeholder="http://"
+      id="trailer"
+      required
+      name="trailer"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Add Movie</button>
+</form>
+{% endblock %}

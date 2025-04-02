@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block head_content %}
+<style>
+  .form-element {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 500px;
+  }
+</style>
+{% endblock %} {% block content %}
+<form action="{{ur_for('auth_bp.submit_signup_page')}}" method="POST" class="form-container">
+  <div class="form-element">
+    <label for="name">Username</label>
+    <input type="text" placeholder="Johndoe" id="name" required />
+  </div>
+  <div class="form-element">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      placeholder="8"
+      id="password"
+      required
+      min="1"
+      max="10"
+      name="password"
+    />
+  </div>
+  <div class="form-element">
+    <label for="confirm">Confirm Password</label>
+    <input
+      type="text"
+      placeholder="Awesome movie"
+      id="confirm"
+      required
+      name="confirm"
+    />
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+{% endblock %}

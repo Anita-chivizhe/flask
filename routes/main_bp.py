@@ -14,14 +14,17 @@ profiles = [
     {
         "name": "Kuromi",
         "image": "https://th.bing.com/th/id/OIP.PynAxQUy7QUOwXbCv0RP2QHaHa?rs=1&pid=ImgDetMain",
+        "isVerified": True,
     },
     {
         "name": "Melody",
         "image": "https://th.bing.com/th/id/OIP.70zFTnd4dntTQwCdPSJvjQHaHa?rs=1&pid=ImgDetMain",
+        "isVerified": True,
     },
     {
         "name": "Kitty",
         "image": "https://th.bing.com/th/id/OIP.P5CGJN00cxOObMGZ2NLllgHaHa?rs=1&pid=ImgDetMain",
+        "isVerified": True,
     },
 ]
 

@@ -9,20 +9,6 @@
     font-family: Roboto, sans-serif;
   }
 
-  .movie-container {
-    /* background: orange; */
-    width: 400px;
-  }
-
-  .movie-poster {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-
-    border-radius: 20px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-
   .movie-spec {
     display: flex;
     align-items: center;
@@ -33,29 +19,32 @@
     color: #7c6e6e;
   }
 
-  /* .movie-list-container {
-        display: flex;
-        justify-content: space-around;
-        padding: 24px;
-        gap: 16px;
-        flex-wrap: wrap;
-      } */
-  .movie-list-container {
+  .movie-container {
+    /* background: orange; */
     padding: 24px;
-    display: grid;
-    /* RAM */
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    justify-items: center;
-    gap: 24px;
+    max-width: 800px;
   }
 </style>
-{% endblock %} {% block content %} {% for movie in movies %}
-<div class="movie-container">
-  <img src="{{movie.poster}}" alt="{{movie.name}}" class="movie-poster" />
-  <div class="movie-spec">
-    <h2 class="movie-name">{{movie.name}}</h2>
-    <h2 class="movie-rating">⭐ {{movie.rating}}</h2>
+
+{% endblock %} {% block content %}
+
+<section class="movie-detail-container">
+  <iframe
+    width="100%"
+    height="800"
+    src="{{movie.trailer}}"
+    title="Ratatouille (2007) Trailer #1 | Movieclips Classic Trailers"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+  <div class="movie-container">
+    <div class="movie-spec">
+      <h2 class="movie-name">{{movie.name}}</h2>
+      <h2 class="movie-rating">⭐ {{movie.rating}}</h2>
+    </div>
+    <p class="movie-summary">{{movie.summary}}</p>
   </div>
-  <p class="movie-summary">{{movie.summary}}</p>
-</div>
-{% endfor %} {% endblock %}
+</section>
+{% endblock %}
